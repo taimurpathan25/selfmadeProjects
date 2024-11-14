@@ -39,15 +39,47 @@ const Pokemon = () => {
     },[])
     
     // For Title update
-    useEffect(()=>{
-        if(searchPokemon){
-            document.title = `Pokemon Name : ${searchPokemon}`
+    // useEffect(()=>{
+    //     if(searchPokemon){
+    //         document.title = `Pokemon Name : ${searchPokemon}`
+    //     }
+    //     else{
+    //         document.title = 'All Pokemons'
+    //     }
+    // },[searchPokemon])
+
+    // For Title and Favicon update based on search term
+    useEffect(() => {
+        if (searchPokemon) {
+            document.title = `Searching for: ${searchPokemon}`;
+
+            // Find the first matched Pokémon image for favicon
+            const matchedPokemon = pokemon.find(p => p.name.toLowerCase().includes(searchPokemon.toLowerCase()));
+            if (matchedPokemon) {
+                changeFavicon(matchedPokemon.sprites.front_default); // Set to Pokémon's image
+            } else {
+                resetFavicon(); // Reset to default if no match is found
+            }
+        } else {
+            document.title = "Pokémon Search";
+            resetFavicon(); // Reset to default when no search
         }
-        else{
-            document.title = 'All Pokemons'
-        }
-        // console.log(searchPokemon)
-    },[searchPokemon])
+    }, [searchPokemon, pokemon]);
+
+    // Helper function to change favicon
+    const changeFavicon = (url) => {
+        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = url;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    };
+
+    // Helper function to reset favicon to default
+    const resetFavicon = () => {
+        changeFavicon('/path/to/default/favicon.ico'); // Update with path to your default favicon
+    };
+
 
     // Search Functionality
     const searchPokemonData = pokemon.filter((currSearchPokemonData)=>

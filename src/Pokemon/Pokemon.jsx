@@ -37,6 +37,17 @@ const Pokemon = () => {
     useEffect(()=>{
         fetchPokemon();
     },[])
+    
+    // For Title update
+    useEffect(()=>{
+        if(searchPokemon){
+            document.title = `Pokemon Name : ${searchPokemon}`
+        }
+        else{
+            document.title = 'All Pokemons'
+        }
+        // console.log(searchPokemon)
+    },[searchPokemon])
 
     // Search Functionality
     const searchPokemonData = pokemon.filter((currSearchPokemonData)=>

@@ -10,15 +10,6 @@ const PokemonCards = ({pokemonAllData}) => {
         <figure>
             <img src={pokemonAllData.sprites.other.dream_world.front_default} alt={pokemonAllData.name} />
         </figure>
-        <div className="pokemon-type">
-            <p>
-                {
-                    pokemonAllData.types.map((currType) => {
-                        return currType.type.name
-                    }).join(" , ")
-                }
-                </p>
-        </div>
         <h1 className='text-3xl text-center mb-5'>{pokemonAllData.name}</h1>
         <div className="pokemon-details flex justify-center">
         <div className="pokemon-paragraph">
@@ -45,7 +36,13 @@ const PokemonCards = ({pokemonAllData}) => {
             }).slice(0,1)}</span>
         </div>
         </div>
-
+        
+        <div className="pokemon-type">
+            <p>{
+                pokemonAllData.types.map((currType) => {
+                return currType.type.name
+                }).join(" , ")}</p>
+        </div>
     </div>
     </div>
     </>

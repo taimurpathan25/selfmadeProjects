@@ -106,6 +106,14 @@ const Pokemon = () => {
         <h1 className=''>Let's Catch the Pakemons</h1> 
        </div>
        <input type="text" placeholder='Search Pokemon Cards'className='search-pokemon' value={searchPokemon} onChange={(e)=>setSearchPokemon(e.target.value)}/>
+         {/* Not Found Message */}
+    {searchPokemonData.length === 0 && (
+      <h2 className="text-center text-2xl text-red-500 font-semibold mt-5">
+        😔 Pokémon Not Found 
+        {/* "<span className="italic">{searchPokemon}</span>" */}
+      </h2>
+    )}
+
     <div className="pokemon-cards grid grid-cols-3 gap-5 mt-2 container mx-auto px-8">
     {/* {pokemon.map((currAllData)=>{ */}
     {searchPokemonData.map((currAllData)=>{

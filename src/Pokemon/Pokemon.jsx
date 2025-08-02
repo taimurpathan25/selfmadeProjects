@@ -61,7 +61,7 @@ const Pokemon = () => {
                 resetFavicon(); // Reset to default if no match is found
             }
         } else {
-            document.title = "Pokémon Search";
+            document.title = "All Pokemons";
             resetFavicon(); // Reset to default when no search
         }
     }, [searchPokemon, pokemon]);

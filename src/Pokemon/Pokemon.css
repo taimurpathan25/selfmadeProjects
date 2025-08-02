@@ -8,14 +8,14 @@
     position: relative;
     border-radius: 5px;
 }
-.child-div{
+/* .child-div{
     width: 92%;
     height: 150px;
     border-radius: 5px;
     background: #01e0fe24;
     position: absolute;
     top: 10px;
-}
+} */
 .pokemon-card figure, .pokemon-card figure img{
     position: relative;
     width: 100%;
